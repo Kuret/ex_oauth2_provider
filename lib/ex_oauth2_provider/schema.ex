@@ -19,6 +19,7 @@ defmodule ExOauth2Provider.Schema do
           field(name, type)
 
         {name, type, defaults} ->
+          defaults = Enum.reject(defaults, fn {k, _} -> k == :null end)
           field(name, type, defaults)
       end)
 
